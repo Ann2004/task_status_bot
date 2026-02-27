@@ -48,7 +48,10 @@ def main():
                 bot.send_message(chat_id=tg_chat_id, text=text, parse_mode='HTML')
                 timestamp = checked_lessons['last_attempt_timestamp']
 
-        except (ReadTimeout, ConnectionError):
+        except ReadTimeout:
+            continue
+
+        except ConnectionError:
             time.sleep(600)
             continue
 
